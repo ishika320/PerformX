@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PerformX</title>
+  </head>
+  <body>
+    <!-- Decorative background shapes that sit behind the app -->
+    <div aria-hidden="true" class="fixed inset-0 pointer-events-none">
+      <svg class="absolute left-0 top-0 w-96 h-96 opacity-30" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="g1" x1="0%" x2="100%" y1="0%" y2="100%">
+            <stop stop-color="#6c5ce7" offset="0%" />
+            <stop stop-color="#ff6b9f" offset="100%" />
+          </linearGradient>
+        </defs>
+        <circle cx="200" cy="200" r="200" fill="url(#g1)" />
+      </svg>
+      <svg class="absolute right-0 bottom-0 w-80 h-80 opacity-25" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="g2" x1="0%" x2="100%" y1="0%" y2="100%">
+            <stop stop-color="#ff6b9f" offset="0%" />
+            <stop stop-color="#6c5ce7" offset="100%" />
+          </linearGradient>
+        </defs>
+        <rect x="0" y="0" width="600" height="600" rx="120" fill="url(#g2)" />
+      </svg>
+    </div>
+
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
