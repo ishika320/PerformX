@@ -1,4 +1,4 @@
-# PerformX — GoalSync AI (Starter)
+# PerformX — GoalSync AI
 
 This repository contains a starter React + Supabase web app for an enterprise goal alignment platform.
 
