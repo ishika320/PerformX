@@ -1,11 +1,11 @@
-# PerformX — GoalSync 
+# PerformX — GoalSync
 
 PerformX is a full-stack employee goal setting and performance tracking platform designed to help organizations manage employee goals, approvals, progress tracking, notifications, and performance analytics.
 
 The platform provides role-based workflows for employees and managers and uses React.js, Node.js, Supabase, and PostgreSQL.
 
-
 ## Features
+
 - Supabase authentication and profile creation
 - Role-based employee and manager workflows
 - Goal creation with client-side validation
@@ -20,7 +20,7 @@ The platform provides role-based workflows for employees and managers and uses R
 - Email notification service
 - Row-Level Security (RLS)
 - Optional AI-assisted goal suggestions
-```
+
 ## Setup Instructions
 
 1. Create a Supabase project and run the SQL in `client/db/schema.sql` to create tables.
@@ -28,7 +28,7 @@ The platform provides role-based workflows for employees and managers and uses R
 3. Copy your Supabase URL and ANON KEY.
 4. In `client/` create a `.env` file with:
 
-```
+```env
 VITE_SUPABASE_URL=https://your-project.supabase.co
 VITE_SUPABASE_ANON_KEY=public-anon-key
 ```
@@ -54,12 +54,21 @@ npm start
 
 ## Row-Level Security
 
-- Run the SQL in `client/db/rls_policies.sql` in your Supabase SQL editor to enable row-level security policies for `profiles`, `goals`, `notifications`, and `audit_logs`.
+Run the SQL in `client/db/rls_policies.sql` in your Supabase SQL editor to enable row-level security policies for:
+
+- `profiles`
+- `goals`
+- `notifications`
+- `audit_logs`
 
 ## Optional AI-Assisted Goal Suggestions
 
-- The repo includes a lightweight AI microservice at `server/ai.js`. It will call OpenAI if `OPENAI_API_KEY` is set in `server/.env`; otherwise it returns heuristic suggestions.
-- To run it locally:
+The repository includes a lightweight AI microservice at `server/ai.js`.
+
+- It can call OpenAI if `OPENAI_API_KEY` is set in `server/.env`.
+- Otherwise, it returns heuristic suggestions.
+
+To run it locally:
 
 ```bash
 cd server
@@ -67,9 +76,13 @@ npm install
 node ai.js
 ```
 
-- The frontend `GoalForm` includes an "AI Suggest" button that calls this service on `POST /ai/suggest` and pre-fills the form with the first suggestion.
+The frontend `GoalForm` includes an **AI Suggest** button that calls this service using:
 
+`POST /ai/suggest`
 
+and can pre-fill the form with the first suggestion.
+
+> **Note:** AI functionality is optional and requires a valid OpenAI API key for OpenAI-based suggestions.
 
 ## Project Architecture
 
@@ -95,16 +108,62 @@ Node.js Services
        +---- Email Notifications
        |
        +---- Optional AI Goal Suggestions
+```
 
 ## Seed Data
 
-- A seeder is provided at `server/seed.js`. It uses the Supabase service role key to create Auth users and insert profiles + goals. To run it:
+A seeder is provided at `server/seed.js`.
+
+It uses the Supabase service role key to create authentication users and insert profiles and goals.
+
+To run it:
 
 ```bash
 cd server
 npm install
-# create a .env with SUPABASE_URL and SUPABASE_SERVICE_KEY
+```
+
+Create a `.env` file containing:
+
+```env
+SUPABASE_URL=your_supabase_url
+SUPABASE_SERVICE_KEY=your_service_key
+```
+
+Then run:
+
+```bash
 node seed.js
 ```
 
-Be careful: the script creates real Auth users in your Supabase project.
+> **Warning:** The seed script creates real authentication users in your Supabase project. Use it carefully, preferably with a development or test project.
+
+## Security
+
+Never commit sensitive credentials to GitHub.
+
+Do not expose:
+
+- Supabase Service Role Key
+- OpenAI API Key
+- SMTP Password
+- Database Password
+- Other private credentials
+
+Use environment variables for sensitive configuration.
+
+## Future Improvements
+
+- Automated testing
+- CI/CD pipeline
+- Advanced performance analytics
+- Improved AI-assisted goal recommendations
+- Enhanced notification management
+- Production monitoring
+- Additional role-based workflows
+
+## Author
+
+**Ishika**
+
+B.Tech — Computer Science & Engineering
