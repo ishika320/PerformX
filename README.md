@@ -20,8 +20,7 @@ The platform provides role-based workflows for employees and managers and uses R
 - Email notification service
 - Row-Level Security (RLS)
 - Optional AI-assisted goal suggestions
-
-
+```
 ## Setup Instructions
 
 1. Create a Supabase project and run the SQL in `client/db/schema.sql` to create tables.
