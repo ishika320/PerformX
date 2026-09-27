@@ -1,4 +1,4 @@
-# PerformX — GoalSync
+# PerformX — GoalSync AI
 
 PerformX is a full-stack employee goal setting and performance tracking platform designed to help organizations manage employee goals, approvals, progress tracking, notifications, and performance analytics.
 
