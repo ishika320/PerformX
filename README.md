@@ -1,15 +1,28 @@
-# PerformX — GoalSync AI
+# PerformX — GoalSync 
 
-This repository contains a starter React + Supabase web app for an enterprise goal alignment platform.
+PerformX is a full-stack employee goal setting and performance tracking platform designed to help organizations manage employee goals, approvals, progress tracking, notifications, and performance analytics.
 
-Features included in this scaffold:
+The platform provides role-based workflows for employees and managers and uses React.js, Node.js, Supabase, and PostgreSQL.
+
+
+## Features
 - Supabase authentication and profile creation
-- Goal creation with client-side validation (weightage rules)
-- Manager approval flow (approve/reject)
-- Audit logs for create/approve actions
-- Dashboard with charts (Recharts)
+- Role-based employee and manager workflows
+- Goal creation with client-side validation
+- Goal weightage validation
+- Manager approval and rejection flow
+- Goal progress tracking
+- Goal check-ins
+- Shared goals
+- Notifications
+- Audit logs
+- Performance dashboard with charts
+- Email notification service
+- Row-Level Security (RLS)
+- Optional AI-assisted goal suggestions
 
-Quick start
+
+## Setup Instructions
 
 1. Create a Supabase project and run the SQL in `client/db/schema.sql` to create tables.
 2. In your Supabase project, enable Email signups.
@@ -29,7 +42,7 @@ npm install
 npm run dev
 ```
 
-Notifier service (email delivery)
+## Email Notification Service
 
 1. Configure SMTP and Supabase service key in `server/.env` (see `.env.example`).
 2. Run the notifier to send emails when notifications are created:
@@ -40,11 +53,11 @@ npm install
 npm start
 ```
 
-RLS policies
+## Row-Level Security
 
 - Run the SQL in `client/db/rls_policies.sql` in your Supabase SQL editor to enable row-level security policies for `profiles`, `goals`, `notifications`, and `audit_logs`.
 
-AI service (goal suggestions)
+## Optional AI-Assisted Goal Suggestions
 
 - The repo includes a lightweight AI microservice at `server/ai.js`. It will call OpenAI if `OPENAI_API_KEY` is set in `server/.env`; otherwise it returns heuristic suggestions.
 - To run it locally:
@@ -59,11 +72,32 @@ node ai.js
 
 
 
-Notes
-- This is a frontend-first, Supabase-backed starter. For production, add row-level security policies, server-side functions, and refresh-token handling.
-- Extend the UI, polish styles, and add CI/CD following the hackathon roadmap.
+## Project Architecture
 
-Seed script
+```text
+React.js Frontend
+       |
+       v
+Supabase / Backend Services
+       |
+       +---- Authentication
+       |
+       +---- PostgreSQL Database
+       |
+       +---- Row-Level Security
+       |
+       +---- Notifications
+       |
+       +---- Audit Logs
+       |
+       v
+Node.js Services
+       |
+       +---- Email Notifications
+       |
+       +---- Optional AI Goal Suggestions
+
+## Seed Data
 
 - A seeder is provided at `server/seed.js`. It uses the Supabase service role key to create Auth users and insert profiles + goals. To run it:
 
